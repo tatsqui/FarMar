@@ -117,7 +117,7 @@ Each sale belongs to a vendor __AND__ a product. The `vendor_id` and `product_id
 1. `self.by_market(market_id)`: returns all of the vendors with the given `market_id`
 
 ### Additional FarMar::Product Methods
-1. `#vendor`: returns the `FarMar::Vendor` instance that is associated with this vendor using the `FarMar::Product` `vendor_id` field
+1. `#vendor`: returns the `FarMar::Vendor` instance that is associated with this product using the `FarMar::Product` `vendor_id` field
 1. `#sales`: returns a collection of `FarMar::Sale` instances that are associated using the `FarMar::Sale` `product_id` field.
 1. `#number_of_sales`: returns the number of times this product has been sold.
 1. `self.by_vendor(vendor_id)`: returns all of the products with the given `vendor_id`
