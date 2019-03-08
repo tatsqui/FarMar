@@ -22,9 +22,9 @@ describe "Market" do
       market.id.must_equal id
     end
 
-    it "requires a positive integer id" do
+    it "requires an integer id" do
       proc {
-        FarMar::Market.new(id: "not an integer", name: "People's Co-op Farmers Market", address: "30th and Burnside", city: "Portand", county: "Multnomah", state: "Oregon", zip: "97282")  
+        FarMar::Market.new(id: "not an integer", name: "People's Co-op Farmers Market", address: "30th and Burnside", city: "Portand", county: "Multnomah", state: "Oregon", zip: "97282")
       }.must_raise ArgumentError
     end
 
