@@ -36,6 +36,13 @@ describe "Product" do
       # do I need this test?
     end
 
+    it "keeps track of vendor id" do
+      v_id = 7
+      product = FarMar::Product.new(id: 1, name: "name", vendor_id: v_id)
+      product.must_respond_to :vendor_id
+      product.vendor_id.must_equal v_id
+    end
+
     it "requires vendor_id to be a positive integer" do
       proc {
         FarMar::Product.new(id: 1, name: "Product", vendor_id: "test")
