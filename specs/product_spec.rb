@@ -1,17 +1,17 @@
 require_relative 'spec_helper'
 
 describe "Product" do
+  before do
+  @product = FarMar::Product.new(id: 1, name: "Product", vendor_id: 10)
+  end
   describe "initialize" do
     it  "creates instance of Product" do
-      product = FarMar::Product.new(id: 1, name: "Product", vendor_id: 10)
-      product.must_be_kind_of FarMar::Product
+      @product.must_be_kind_of FarMar::Product
     end
 
     it "keeps track of id" do
-      id = 2
-      product = FarMar::Product.new(id: id, name: "Product", vendor_id: 10)
-      product.must_respond_to :id
-      product.id.must_equal id
+      @product.must_respond_to :id
+      @product.id.must_equal 1
     end
 
     it "requires id to be a positive integer" do
@@ -25,11 +25,8 @@ describe "Product" do
     end
 
     it "keeps track of name"  do
-      name = "test name"
-      product = FarMar::Product.new(id: 1, name: name, vendor_id: 10)
-
-      product.must_respond_to :name
-      product.name.must_equal  name
+      @product.must_respond_to :name
+      @product.name.must_equal  "Product"
     end
 
     it "requires name to be a string" do
@@ -37,10 +34,8 @@ describe "Product" do
     end
 
     it "keeps track of vendor id" do
-      v_id = 7
-      product = FarMar::Product.new(id: 1, name: "name", vendor_id: v_id)
-      product.must_respond_to :vendor_id
-      product.vendor_id.must_equal v_id
+      @product.must_respond_to :vendor_id
+      @product.vendor_id.must_equal 10
     end
 
     it "requires vendor_id to be a positive integer" do

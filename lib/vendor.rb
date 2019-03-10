@@ -1,7 +1,7 @@
 module FarMar
 
   class Vendor
-    attr_reader :id, :name, :market_id, :num_of_employees
+    attr_reader :id, :name, :market_id, :num_of_employees, :vendors
 
     def initialize(id:, name:, num_of_employees:, market_id:)
       unless id.instance_of?(Integer) && id > 0
@@ -20,6 +20,11 @@ module FarMar
       @name = name
       @num_of_employees = num_of_employees
       @market_id = market_id
+      @vendors = []
+    end
+
+    def self.all
+      return @vendors
     end
 
   end
