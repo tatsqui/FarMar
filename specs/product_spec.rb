@@ -49,6 +49,25 @@ describe "Product" do
     end
   end
 
+  describe "vendor" do 
+    it "returns an instance of vendor with the correct id" do 
+      product = FarMar::Product.new(1337, "test product", 10)
+      vendor = product.vendor
+      vendor.must_be_kind_of FarMar::Vendor 
+      vendor.id.must_equal product.vendor_id
+    end
+
+    it "returns nil when the vendor_id doesn't correspond to a real vendor" do 
+      #Assuming there is no vendor with id 999999
+      vendor_id = 999999
+      FarMar::Vendor.find(vendor_id).must_be_nil "whoops, didn't expect that for vendor #{vendor_id} which invalidates the test"
+      
+      product = FarMar::Product.new(1337, "test", 999999)
+      vendor = product.vendor
+      vendor.must_be_nil
+    end
+  end
+
   describe "all" do
     before do
       @products = FarMar::Product.all

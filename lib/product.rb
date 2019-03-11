@@ -26,5 +26,9 @@ module FarMar
     def self.find(id)
       all.select { |prod| prod.id == id }.first
     end
+
+    def vendor
+      Vendor.find(@vendor_id)
+    end
   end
 end
