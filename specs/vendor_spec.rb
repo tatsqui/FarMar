@@ -58,6 +58,44 @@ describe "Vendor" do
       }.must_raise ArgumentError
     end
   end
+ 
+  describe "#products" do 
+    it "returns an empty array if no products match" do 
+      vendor = FarMar::Vendor.new(999999, "test", 5, 10)
+      
+      products = vendor.products 
+      products.must_be_kind_of Array
+      products.must_be_empty
+    end
+
+    it "returns an array with one product" do 
+      vendor_id = 3
+      vendor = FarMar::Vendor.new(vendor_id, "test", 5, 10)
+
+      products = vendor.products
+      products.must_be_kind_of Array
+      products.size.must_equal 1
+
+      products.each do |product|
+        product.must_be_kind_of FarMar::Product
+        product.vendor_id.must_equal vendor.id
+      end
+    end
+
+    it "returns an array with many products if many match" do 
+      vendor_id = 4
+      vendor = FarMar::Vendor.new(vendor_id, "test", 5, 10)
+      
+      products = vendor.products
+      products.must_be_kind_of Array
+      products.size.must_equal 3
+
+      products.each do |product|
+        product.must_be_kind_of FarMar::Product
+        product.vendor_id.must_equal vendor.id
+      end
+    end
+  end
 
   describe "all" do
     before do

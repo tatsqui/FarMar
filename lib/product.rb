@@ -30,5 +30,9 @@ module FarMar
     def vendor
       Vendor.find(@vendor_id)
     end
+
+    def self.made_by_vendor(vendor_id)
+      all.select { |product| product.vendor_id == vendor_id }
+    end
   end
 end

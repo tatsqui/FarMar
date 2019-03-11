@@ -107,4 +107,48 @@ describe "Product" do
       product.must_be_nil
     end
   end
+
+  describe "made_by_vendor" do 
+  
+    it "does something if the vendor id is invalid" do 
+      vendor_id = "not a vendor"
+      products = FarMar::Product.made_by_vendor(vendor_id)
+      products.must_be_kind_of Array
+      products.must_be_empty
+    end
+
+    it "returns an array of one Product if one product matches" do
+      vendor_id = 3
+      products = FarMar::Product.made_by_vendor(3)
+      products.must_be_kind_of Array
+      products.size.must_equal 1
+
+      products.each do |product|
+        product.must_be_kind_of FarMar::Product
+        product.vendor_id.must_equal vendor_id
+      end
+    end
+
+    it "returns an empty array if no products match" do
+      #Assumption no products hve vendor id 999999
+      vendor_id = 999999
+
+      products = FarMar::Product.made_by_vendor(vendor_id)
+      products.must_be_kind_of Array
+      products.must_be_empty
+    end
+
+    it "returns an array of many Products if many products match" do 
+      vendor_id = 4
+      products = FarMar::Product.made_by_vendor(vendor_id)
+      products.must_be_kind_of Array
+      products.size.must_equal 3
+
+      products.each do |product|
+        product.must_be_kind_of FarMar::Product
+        product.vendor_id.must_equal vendor_id
+      end
+    end
+  
+  end
 end
