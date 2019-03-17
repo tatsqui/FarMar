@@ -4,7 +4,7 @@ module FarMar
   class Market
     attr_reader :id, :name, :address, :city, :county, :state, :zip
 
-    def initialize id, name, address, city, county, state, zip
+    def initialize id:, name:, address:, city:, county:, state:, zip:
       unless id.instance_of?(Integer) && id > 0
         raise ArgumentError, "ID must be a positive integer. Got: #{id}..."
       end
@@ -20,7 +20,7 @@ module FarMar
 
     def self.all
       CSV.read("support/markets.csv").map do |line|
-        Market.new(line[0].to_i, line[1], line[2], line[3], line[4], line[5], line[6])
+        Market.new(id: line[0].to_i, name: line[1], address: line[2], city: line[3], county: line[4], state: line[5], zip: line[6])
       end
     end
 

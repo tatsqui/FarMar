@@ -15,5 +15,15 @@ module FarMar
       @vendor_id = vendor_id
       @product_id = product_id
     end
+
+    def self.all_sales
+      CSV.read("support/sales.csv").map do |line|
+        Sales.new(line[0].to_i, line[1], line[2], line[3], line[4])
+      end
+    end
+    
+    def self.find(id)
+      all_sales.select { |sale| sale.id == id }.first
+    end
   end
 end

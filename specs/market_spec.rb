@@ -2,18 +2,16 @@ require 'csv'
 require_relative 'spec_helper'
 
 describe "Market" do
-  before do
-    @market = FarMar::Market.new(1, "People's Co-op Farmers Market", "30th and Burnside", "Portland", "Multnomah", "Oregon", "97282")
-  end
-
+  let(:market){ FarMar::Market.new(id: 1, name:"People's Co-op Farmers Market", address:"30th and Burnside", city: "Portland", county: "Multnomah", state: "Oregon", zip: "97282") }
+ 
   describe "initialize" do
     it "creates a new instance of @market" do
-      expect(@market).must_be_kind_of FarMar::Market
+      expect(market).must_be_kind_of FarMar::Market
     end
 
     it "keeps track of id" do
-      @market.must_respond_to :id
-      @market.id.must_equal 1
+      market.must_respond_to :id
+      market.id.must_equal 1
     end
 
     it "requires an integer id" do
@@ -29,33 +27,33 @@ describe "Market" do
     end
 
     it "keeps track of name" do
-      @market.must_respond_to :name
-      @market.name.must_equal "People's Co-op Farmers Market"
+      market.must_respond_to :name
+      market.name.must_equal "People's Co-op Farmers Market"
     end
 
     it "keeps track of address" do
-      @market.must_respond_to :address
-      @market.address.must_equal "30th and Burnside"
+      market.must_respond_to :address
+      market.address.must_equal "30th and Burnside"
     end
 
     it "keeps track of city" do
-      @market.must_respond_to :city
-      @market.city.must_equal "Portland"
+      market.must_respond_to :city
+      market.city.must_equal "Portland"
     end
 
     it "keeps track of county" do
-      @market.must_respond_to :county
-      @market.county.must_equal "Multnomah"
+      market.must_respond_to :county
+      market.county.must_equal "Multnomah"
     end
 
     it "keeps track of state" do
-      @market.must_respond_to :state
-      @market.state.must_equal "Oregon"
+      market.must_respond_to :state
+      market.state.must_equal "Oregon"
     end
 
     it "keeps track of zip" do
-      @market.must_respond_to :zip
-      @market.zip.must_equal "97282"
+      market.must_respond_to :zip
+      market.zip.must_equal "97282"
     end
   end
 
