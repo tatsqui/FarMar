@@ -88,19 +88,19 @@ describe "Market" do
 
     it "returns the first instance of market " do
       id = 1
-      market = FarMar::Market.find(1)
-      market.id.must_equal id
+      @market = FarMar::Market.find(1)
+      @market.id.must_equal id
     end
 
     it "returns nil if a market does not exist" do
-      market = FarMar::Market.find(12334)
-      market.must_be_nil
+      @market = FarMar::Market.find(12334)
+      @market.must_be_nil
     end
 
     it "finds the last market" do
       id = 500
-      market  = FarMar::Market.find(500)
-      market.id.must_equal id
+      @market = FarMar::Market.find(500)
+      @market.id.must_equal id
     end
   end
 end

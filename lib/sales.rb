@@ -2,10 +2,10 @@ require 'csv'
 
 module FarMar
   class Sale
-    attr_reader :id, :amount, :purchase_time, :vendor_id, :product_id
+    attr_reader :id, :amount, :purchase_time, :vendor_id, :product_id, :all, :find
 
     def initialize id:, amount:, purchase_time:, vendor_id:, product_id:
-      unless id > 0 && id.instance_of?(Integer)
+      unless id > 0 && id.instance_of?(Integer) && vendor_id.instance_of?(Integer) && vendor_id >0 && product_id.instance_of?(Integer) && product_id > 0
         raise ArgumentError, "ID must be a positive integer, given #{id}"
       end
       
@@ -16,9 +16,9 @@ module FarMar
       @product_id = product_id
     end
 
-    def self.all_sales
+    def self.all
       CSV.read("support/sales.csv").map do |line|
-        Sales.new(line[0].to_i, line[1], line[2], line[3], line[4])
+        Sale.new(id: line[0].to_i, amount: line[1].to_i, purchase_time: line[2], vendor_id: line[3].to_i, product_id: line[4].to_i)
       end
     end
     

@@ -2,7 +2,7 @@ require 'csv'
 require_relative 'spec_helper'
 
 describe "Sale" do 
-  let(:sale) {FarMar::Sale.new(id: 1, amount: 9290, purchase_time: "2013-11-07 4:34:06 -0800", vendor_id: 1, product_id: 3)}
+let(:sale) {FarMar::Sale.new(id: 1, amount: 9290, purchase_time: "2013-11-07 4:34:06 -0800", vendor_id: 1, product_id: 3)}
   describe "initialize" do
     it "creates a new instance of a Sale" do 
       sale.must_be_kind_of FarMar::Sale
@@ -37,6 +37,23 @@ describe "Sale" do
       sale.must_respond_to :product_id
       sale.product_id.must_equal 3
     end
+  end
+  
+  describe "all sales" do 
+  before do 
+    @list_of_sales = FarMar::Sale.all
+    puts @list_of_sales.first
+  end
 
+    it "returns an array for all_sales" do
+      # @list_of_sales.must_be_kind_of Array
+    end
+  
+    it "returns an array full of sale instances" do 
+      # puts @list_of_sales.first
+      # @list_of_sales.each do |sold|
+      #   sold.must_be_kind_of FarMar::Sale
+      # end
+    end
   end
 end
