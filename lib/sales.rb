@@ -4,7 +4,7 @@ module FarMar
   class Sale
     attr_reader :id, :amount, :purchase_time, :vendor_id, :product_id
 
-    def initialize id, amount, purchase_time, vendor_id, product_id
+    def initialize id:, amount:, purchase_time:, vendor_id:, product_id:
       unless id > 0 && id.instance_of?(Integer)
         raise ArgumentError, "ID must be a positive integer, given #{id}"
       end
