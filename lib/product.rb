@@ -3,7 +3,7 @@ module FarMar
   class Product
     attr_reader :id, :name, :vendor_id
 
-    def initialize(id, name, vendor_id)
+    def initialize(id:, name:, vendor_id:)
       unless id.instance_of?(Integer) && id > 0
         raise ArgumentError, "ID must be a positive number, given #{id}..."
       end
@@ -19,7 +19,7 @@ module FarMar
 
     def self.all
       CSV.read("support/products.csv").map do |line|
-        Product.new(line[0].to_i, line[1], line[2].to_i)
+        Product.new(id: line[0].to_i, name: line[1], vendor: line[2].to_i)
       end
     end
 

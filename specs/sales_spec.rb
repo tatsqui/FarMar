@@ -40,13 +40,12 @@ let(:sale) {FarMar::Sale.new(id: 1, amount: 9290, purchase_time: "2013-11-07 4:3
   end
   
   describe "all sales" do 
-  before do 
-    @list_of_sales = FarMar::Sale.all
-    puts @list_of_sales.first
-  end
+    before do
+      @salty = FarMar::Sale.all
+    end
 
     it "returns an array for all_sales" do
-      # @list_of_sales.must_be_kind_of Array
+      @salty.must_be_kind_of Array
     end
   
     it "returns an array full of sale instances" do 
